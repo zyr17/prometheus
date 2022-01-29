@@ -1,0 +1,146 @@
+#!/usr/bin/env python3
+
+
+import os
+import re
+import csv
+
+
+PREFIX = 'nvidia_smi_'
+
+
+def get_all_key():
+    h = [x for x in os.popen('nvidia-smi --help-query-gpu').read().strip().split('\n') if re.match(r'"[a-z]', x)]
+    return [x.split('"')[1] for x in h]
+
+
+def kv2onetag(key, value):
+    return f'{key.strip()}="{value.strip()}"'
+
+
+def kkvs2tag(key, kvs):
+    res = '{'
+    for k, v in kvs:
+        if res != '{':
+            res += ','
+        res += kv2onetag(k, v)
+    res += '}'
+    return key + res
+
+
+def get_gpu_info(keys, values):
+    info_keys = [
+        "driver_version",
+        "name",
+        "serial",
+        "uuid",
+        "pci_bus_id",
+        "driver_model_current",
+        "driver_model_pending",
+        "vbios_version",
+        "pstate",
+        "index",
+    ]
+    key = f'gpu_info'
+    tags = [['hostname', open('/etc/hostname').read()]]
+    for i in info_keys:
+        try:
+            tags.append([i, values[keys.index(i)]])
+        except:
+            tags.append([i, '[N/A]'])
+    result = kkvs2tag(key, tags)
+    return result
+
+
+def get_universal_tag(keys, values):
+    tag_keys = [
+        "index",
+        "uuid",
+    ]
+    tags = []
+    for i in tag_keys:
+        try:
+            tags.append([i, values[keys.index(i)]])
+        except:
+            tags.append([i, '[N/A]'])
+    result = kkvs2tag('', tags)
+    return result
+
+
+def key_change(keys):
+    res = []
+    for k in keys:
+        res.append(k.strip().split(' ')[0].replace('.', '_'))
+    return res
+
+
+def value_change(v):
+    v = v.lower().strip()
+    if 'active' in v:
+        return 0 if 'not' in v else 1  # active, not active
+    if 'able' in v:
+        return 1 if 'enable' in v else 0  # enable, disable
+    if 'true' in v:
+        return 1
+    if 'false' in v:
+        return 0
+    # below considers a number
+    if ' ' in v:
+        v = v.split(' ')[0]  # remove unit and %
+    if '0x' == v[:2]:
+        return int(v, 16)  # hex
+    try:
+        return int(v)
+    except:
+        try:
+            return float(v)
+        except:
+            return None
+
+
+def get_one_result(keys, values):
+    res = {}
+    res[get_gpu_info(keys, values)] = 1
+    univ_tag = get_universal_tag(keys, values)
+    for k, v in zip(keys, values):
+        vc = value_change(v)
+        print(v, vc)
+        if vc is not None:
+            res[k + univ_tag] = value_change(v)
+    return res
+
+
+def get_csv(keys):
+    cmd = f'nvidia-smi --format=csv --query-gpu={",".join(keys)}'
+    try:
+        assert '"' not in cmd
+        assert len(keys) > 0
+        data = list(csv.reader(os.popen(cmd)))
+        assert len(data) >= 2
+        ll = '|'.join(data[0])
+        for k in keys:
+            assert k in ll
+    except:  # smi run with error, return empty file
+        return {}
+    keys = key_change(data[0])
+    # data = list(zip(*data[1:]))
+    res = {}
+    for i in data[1:]:
+        res.update(get_one_result(keys, i))
+    return res
+
+
+def gen_prom(res):
+    s = []
+    for k in res:
+        s.append(f'{k} {res[k]}')
+    s.sort()
+    s = '\n'.join(s)
+    return s
+    
+
+if __name__ == '__main__':
+    keys = get_all_key()
+    res = get_csv(keys)
+    prom = gen_prom(res)
+    print(prom)

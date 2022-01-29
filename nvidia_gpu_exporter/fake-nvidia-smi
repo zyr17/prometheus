@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Fake nvidia-smi, read from txt as result, so docker doesn't need to be a 
+# GPU compatible docker, but needs to add cron in real machine to update
+# texts.
+
+echo $@ >> /test.txt
+
+curdir=$(readlink -f  "$(dirname "$0")")
+
+ARG="${1:2:4}"
+if [[ $ARG == 'list' ]]; then
+    cat $curdir/list_gpus.txt
+elif [[ $ARG == 'help' ]]; then
+    cat $curdir/help.txt
+elif [[ $ARG == 'quer' ]]; then
+    cat $curdir/query.txt
+else
+    exit 1
+fi

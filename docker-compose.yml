@@ -104,6 +104,17 @@ services:
       - front-tier
     restart: always
 
+  nvidia-gpu-exporter:
+    build: ./nvidia_gpu_exporter
+    restart: unless-stopped
+    deploy:
+      mode: global
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+
 #  pushgateway:
 #    image: prom/pushgateway
 #    restart: always

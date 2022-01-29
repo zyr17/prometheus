@@ -1,0 +1,1 @@
+echo node_host_name{hostname=\"`cat /etc/hostname`\"} 1

@@ -44,8 +44,12 @@ services:
     command: 
       - '--path.procfs=/host/proc' 
       - '--path.sysfs=/host/sys'
+      - '--path.rootfs=/rootfs'
       - --collector.filesystem.ignored-mount-points
       - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
+      - --collector.diskstats.ignored-devices
+      - '^((ram|loop|fd|(h|s|v|xv)d[a-z]|nvme\\d+n\\d+p)\\d+|tmpfs|mfs.+)$$'
+      - '--collector.textfile.directory=/rootfs/var/log/prom_textfile'
     ports:
       - 9100:9100
     networks:
@@ -109,6 +113,25 @@ services:
           - node.role==manager
       restart_policy:
         condition: on-failure
+
+  #lark_webhook_notify:
+
+#  nvidia-gpu-exporter:
+#    # build: ./nvidia_gpu_exporter
+#    image: utkuozdemir/nvidia_gpu_exporter:0.3.0
+#    restart: unless-stopped
+#    volumes:
+#      - ./nvidia_gpu_exporter:/app
+#    command: 
+#      - '--nvidia-smi-command=/app/fake-nvidia-smi'
+#    networks:
+#      - monitor-net
+#    deploy:
+#      mode: global
+#      placement:
+#        constraints:
+#          - node.role==worker
+
 
 #  pushgateway:
 #    image: prom/pushgateway

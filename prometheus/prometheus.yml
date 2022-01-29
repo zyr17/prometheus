@@ -62,6 +62,19 @@ scrape_configs:
       type: 'A'
       port: 9100
 
+#   # nvidia-gpu-exporter. with docker stack will face device problem, so use
+#   # cron instead.
+#   - job_name: 'nvidia-gpu-exporter'
+#     
+#     scrape_interval: 30s
+#     
+#     dns_sd_configs:
+#     - names:
+#       - 'tasks.nvidia-gpu-exporter'
+#       type: 'A'
+#       port: 9835
+
+
 #  - job_name: 'pushgateway'
 #    scrape_interval: 10s
 #    dns_sd_configs:
