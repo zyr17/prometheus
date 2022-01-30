@@ -1,10 +1,13 @@
+global:
+  resolve_timeout: 7d
+
 route:
-  receiver: 'slack'
+  receiver: 'lark'
+  group_interval: 10s
+  group_wait: 10s
+  repeat_interval: 12h
 
 receivers:
-  - name: 'slack'
-#       slack_configs:
-#           - send_resolved: true
-#             username: '<username>'
-#             channel: '#<channel-name>'
-#             api_url: '<incomming-webhook-url>'
+  - name: 'lark'
+    webhook_configs:
+      - url: http://lark-server-bot:29980

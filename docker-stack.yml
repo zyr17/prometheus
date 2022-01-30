@@ -114,12 +114,46 @@ services:
       restart_policy:
         condition: on-failure
 
-  #lark_webhook_notify:
+  lark-server-bot:
+    image: zyr17/flask-env
+    depends_on:
+      - redis
+    volumes:
+      - ./ServerManagerInLark/codes:/app
+      - /root/.ssh:/root/.ssh
+      - /etc/hosts:/etc/host_hosts
+      #- ./certbot/conf:/etc/letsencrypt
+    networks:
+      - monitor-net
+    ports:
+      - "29980:29980"
+    deploy:
+      placement:
+        constraints:
+          - node.role==manager
+      restart_policy:
+        condition: on-failure
+  
+  redis:
+    image: redis:latest
+    volumes:
+      - ./ServerManagerInLark/redis:/redis
+    # ports:
+    #   - "29980:29980"
+    networks:
+      - monitor-net
+    command: "redis-server /redis/redis.conf"
+    deploy:
+      placement:
+        constraints:
+          - node.role==manager
+      restart_policy:
+        condition: on-failure
+
 
 #  nvidia-gpu-exporter:
 #    # build: ./nvidia_gpu_exporter
 #    image: utkuozdemir/nvidia_gpu_exporter:0.3.0
-#    restart: unless-stopped
 #    volumes:
 #      - ./nvidia_gpu_exporter:/app
 #    command: 

@@ -1,0 +1,3 @@
+[submodule "ServerManagerInLark"]
+	path = ServerManagerInLark
+	url = git@github.com:zyr17/ServerManagerInLark.git
