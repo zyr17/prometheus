@@ -102,9 +102,9 @@ def get_one_result(keys, values):
     res = {}
     res[get_gpu_info(keys, values)] = 1
     univ_tag = get_universal_tag(keys, values)
+    res['gpu_error'] = 1 if 'err' in '|'.join(values).lower() else 0
     for k, v in zip(keys, values):
         vc = value_change(v)
-        print(v, vc)
         if vc is not None:
             res[k + univ_tag] = value_change(v)
     return res
@@ -133,7 +133,7 @@ def get_csv(keys):
 def gen_prom(res):
     s = []
     for k in res:
-        s.append(f'{k} {res[k]}')
+        s.append(f'{PREFIX}{k} {res[k]}')
     s.sort()
     s = '\n'.join(s)
     return s
