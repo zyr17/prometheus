@@ -23,8 +23,8 @@ services:
       - '--web.enable-admin-api'
     ports:
       - 9090:9090
-    depends_on:
-      - cadvisor
+#    depends_on:
+#      - cadvisor
 #      - pushgateway
     networks:
       - monitor-net
@@ -77,21 +77,21 @@ services:
       restart_policy:
         condition: on-failure    
 
-  cadvisor:
-    image: google/cadvisor
-    volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:rw
-      - /sys:/sys:ro
-      - /var/lib/docker/:/var/lib/docker:ro
-    ports:
-      - 8080:8080
-    networks:
-      - monitor-net
-    deploy:
-      mode: global
-      restart_policy:
-          condition: on-failure
+#   cadvisor:
+#     image: google/cadvisor
+#     volumes:
+#       - /:/rootfs:ro
+#       - /var/run:/var/run:rw
+#       - /sys:/sys:ro
+#       - /var/lib/docker/:/var/lib/docker:ro
+#     ports:
+#       - 8080:8080
+#     networks:
+#       - monitor-net
+#     deploy:
+#       mode: global
+#       restart_policy:
+#           condition: on-failure
 
   grafana:
     image: grafana/grafana
@@ -132,7 +132,7 @@ services:
         constraints:
           - node.role==manager
       restart_policy:
-        condition: on-failure
+        condition: any
   
   redis:
     image: redis:latest
