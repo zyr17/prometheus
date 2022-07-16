@@ -112,6 +112,7 @@ def get_one_result(keys, values):
 
 def get_csv(keys):
     cmd = f'nvidia-smi --format=csv --query-gpu={",".join(keys)}'
+    res = {'on': 1}
     try:
         assert '"' not in cmd
         assert len(keys) > 0
@@ -120,11 +121,11 @@ def get_csv(keys):
         ll = '|'.join(data[0])
         for k in keys:
             assert k in ll
-    except:  # smi run with error, return empty file
-        return {}
+    except:  # smi run with error, return nvidia_smi_on=0
+        res['on'] = 0
+        return res
     keys = key_change(data[0])
     # data = list(zip(*data[1:]))
-    res = {}
     for i in data[1:]:
         res.update(get_one_result(keys, i))
     return res
