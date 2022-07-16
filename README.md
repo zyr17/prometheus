@@ -1,3 +1,19 @@
+## preliminary
+- give all nodes a hostname, and set ssh config in master and ssh key in slaves
+  to make master can run `ssh hostname` to all machines, INCLUDING self.
+- install docker on all machines and add them into swarm.
+
+## start:
+- `git submodule update --init --recursivegit submodule update --init --recursive`
+- run `./deploy.sh` to deploy all dockers. master node will deploy prometheus,
+  grafana and lark bot, and all nodes will deploy node\_exporter.
+- run `cd prometheus_text_metric_scripts; ./sync_scripts.py` to deploy text
+  metric scripts to grab special metrics e.g. nvidia-smi, mfscli.
+
+-----
+
+original README
+
 ![](https://github.com/vegasbrianc/prometheus/workflows/prometheus%20test/badge.svg)
 
 # Contents
