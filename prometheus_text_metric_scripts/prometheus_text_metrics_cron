@@ -4,3 +4,6 @@ SHELL=/bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 * *    * * *   root /root/prometheus_text_metric_scripts/run.sh > /var/log/prom_text_metrics_run.log 2>&1
+* *    * * *   root sleep 15s; /root/prometheus_text_metric_scripts/run.sh > /var/log/prom_text_metrics_run.log 2>&1
+* *    * * *   root sleep 30s; /root/prometheus_text_metric_scripts/run.sh > /var/log/prom_text_metrics_run.log 2>&1
+* *    * * *   root sleep 45s; /root/prometheus_text_metric_scripts/run.sh > /var/log/prom_text_metrics_run.log 2>&1
