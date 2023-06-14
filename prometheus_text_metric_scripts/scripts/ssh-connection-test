@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# ssh from root to all slaves. 
+
+# check if is swarm leader machine; if not, do nothing and exit
+if [[ -z `docker node ls 2>/dev/null` ]]; then
+    exit
+fi
+
+# get all servers in hosts
+cat /etc/hosts | grep -P "^10.*(node|idc)" | while read -r line; do
+    IP=`echo $line | awk '{print $1}'`
+    NAME=`echo $line | awk '{print $2}'`
+    SUC=`ssh -o ConnectTimeout=1 $NAME echo success < /dev/null 2>/dev/null`
+    if [[ $SUC != success ]]; then
+        # echo wrong of $IP $NAME with $SUC
+        echo node_down{hostname=\"$NAME\"} 1
+    else
+        # echo success of $IP $NAME with $SUC
+        :
+    fi
+done
