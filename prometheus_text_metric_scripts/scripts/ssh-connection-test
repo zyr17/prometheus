@@ -14,9 +14,10 @@ cat /etc/hosts | grep -P "^10.*(node|idc)" | while read -r line; do
     SUC=`ssh -o ConnectTimeout=1 $NAME echo success < /dev/null 2>/dev/null`
     if [[ $SUC != success ]]; then
         # echo wrong of $IP $NAME with $SUC
-        echo node_down{hostname=\"$NAME\"} 1
+        echo node_ssh_down{hostname=\"$NAME\"} 1
     else
         # echo success of $IP $NAME with $SUC
+        echo node_ssh_down{hostname=\"$NAME\"} 0
         :
     fi
 done

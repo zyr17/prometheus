@@ -31,6 +31,9 @@ $1 == "metadata servers:" {
 	cpu_used = $9 # "all:0.7310232% sys:0.3154687% user:0.4155545%"
 	last_successful_metadata_save = $10 # unix timestamp
 	last_metadata_save_duration = $11 # fractional seconds
+    if (last_metadata_save_duration == "-") {
+        last_metadata_save_duration = "0"
+    }
 	last_metadata_save_status = $12 # "Saved in background"
 	exports_checksum = $13 # "FFCCFD8ADEFBE2DE"
 
@@ -149,7 +152,11 @@ $1 == "disks:" {
 	printf "mfs_disk_info{%s} 1\n", metric_labels
 
 	printf "mfs_disk_chunks{%s} %d\n", metric_labels, chunks
-	printf "mfs_disk_error{%s,error=\"%s\"} %d\n", metric_labels, last_error, (last_error != "no errors")
+    have_error = (last_error != "no errors")
+    if (!have_error) {
+        last_error = "0"
+    }
+    printf "mfs_disk_error{%s} %s\n", metric_labels, last_error
 	printf "mfs_disk_status{%s,status=\"%s\"} %d\n", metric_labels, status, (status == "ok")
 	# TODO more metrics
 	printf "mfs_disk_used_bytes{%s} %d\n", metric_labels, used_bytes
