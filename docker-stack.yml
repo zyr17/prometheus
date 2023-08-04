@@ -135,7 +135,7 @@ services:
         condition: any
   
   redis:
-    image: redis:latest
+    image: redis:7.0.7
     volumes:
       - ./ServerManagerInLark/redis:/redis
     # ports:
