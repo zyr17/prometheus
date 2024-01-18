@@ -28,7 +28,7 @@
   "graphTooltip": 1,
   "id": 2,
   "links": [],
-  "liveNow": false,
+  "liveNow": true,
   "panels": [
     {
       "collapsed": false,
@@ -3196,6 +3196,6 @@
   "timezone": "browser",
   "title": "Monitor",
   "uid": "fue1F835",
-  "version": 48,
+  "version": 51,
   "weekStart": ""
 }
