@@ -1,190 +1,6 @@
 {
   "GPU": [
     {
-      "name": "1 GPU Server GPU Number Error",
-      "interval": "1m",
-      "rules": [
-        {
-          "expr": "",
-          "for": "5m",
-          "annotations": {
-            "summary": "1 GPU Server GPU Number Error"
-          },
-          "grafana_alert": {
-            "id": 9,
-            "orgId": 1,
-            "title": "1 GPU Server GPU Number Error",
-            "condition": "B",
-            "data": [
-              {
-                "refId": "A",
-                "queryType": "",
-                "relativeTimeRange": {
-                  "from": 600,
-                  "to": 0
-                },
-                "datasourceUid": "PBFA97CFB590B2093",
-                "model": {
-                  "exemplar": false,
-                  "expr": "count(nvidia_smi_gpu_info * on (instance) group_left(hostname) node_host_name{hostname=~\"idc56202|idc56203\"}) by (hostname)",
-                  "hide": false,
-                  "interval": "",
-                  "intervalMs": 1000,
-                  "legendFormat": "",
-                  "maxDataPoints": 43200,
-                  "refId": "A"
-                }
-              },
-              {
-                "refId": "B",
-                "queryType": "",
-                "relativeTimeRange": {
-                  "from": 0,
-                  "to": 0
-                },
-                "datasourceUid": "-100",
-                "model": {
-                  "conditions": [
-                    {
-                      "evaluator": {
-                        "params": [
-                          1
-                        ],
-                        "type": "lt"
-                      },
-                      "operator": {
-                        "type": "and"
-                      },
-                      "query": {
-                        "params": [
-                          "A"
-                        ]
-                      },
-                      "reducer": {
-                        "params": [],
-                        "type": "last"
-                      },
-                      "type": "query"
-                    }
-                  ],
-                  "datasource": {
-                    "type": "__expr__",
-                    "uid": "-100"
-                  },
-                  "hide": false,
-                  "intervalMs": 1000,
-                  "maxDataPoints": 43200,
-                  "refId": "B",
-                  "type": "classic_conditions"
-                }
-              }
-            ],
-            "updated": "2022-01-30T02:46:34Z",
-            "intervalSeconds": 60,
-            "version": 2,
-            "uid": "kGv6bYb7z",
-            "namespace_uid": "_u4exYxnz",
-            "namespace_id": 5,
-            "rule_group": "1 GPU Server GPU Number Error",
-            "no_data_state": "OK",
-            "exec_err_state": "Alerting"
-          }
-        }
-      ]
-    },
-    {
-      "name": "4 GPU Server GPU Number Error",
-      "interval": "1m",
-      "rules": [
-        {
-          "expr": "",
-          "for": "5m",
-          "annotations": {
-            "summary": "4 GPU Server GPU Number Error"
-          },
-          "grafana_alert": {
-            "id": 10,
-            "orgId": 1,
-            "title": "4 GPU Server GPU Number Error",
-            "condition": "B",
-            "data": [
-              {
-                "refId": "A",
-                "queryType": "",
-                "relativeTimeRange": {
-                  "from": 600,
-                  "to": 0
-                },
-                "datasourceUid": "PBFA97CFB590B2093",
-                "model": {
-                  "exemplar": false,
-                  "expr": "count(nvidia_smi_gpu_info * on (instance) group_left(hostname) node_host_name{hostname=~\"node27|node28|node29\"}) by (hostname)",
-                  "hide": false,
-                  "interval": "",
-                  "intervalMs": 1000,
-                  "legendFormat": "",
-                  "maxDataPoints": 43200,
-                  "refId": "A"
-                }
-              },
-              {
-                "refId": "B",
-                "queryType": "",
-                "relativeTimeRange": {
-                  "from": 0,
-                  "to": 0
-                },
-                "datasourceUid": "-100",
-                "model": {
-                  "conditions": [
-                    {
-                      "evaluator": {
-                        "params": [
-                          4
-                        ],
-                        "type": "lt"
-                      },
-                      "operator": {
-                        "type": "and"
-                      },
-                      "query": {
-                        "params": [
-                          "A"
-                        ]
-                      },
-                      "reducer": {
-                        "params": [],
-                        "type": "last"
-                      },
-                      "type": "query"
-                    }
-                  ],
-                  "datasource": {
-                    "type": "__expr__",
-                    "uid": "-100"
-                  },
-                  "hide": false,
-                  "intervalMs": 1000,
-                  "maxDataPoints": 43200,
-                  "refId": "B",
-                  "type": "classic_conditions"
-                }
-              }
-            ],
-            "updated": "2022-01-30T07:06:13Z",
-            "intervalSeconds": 60,
-            "version": 3,
-            "uid": "rN-ebLx7z",
-            "namespace_uid": "_u4exYxnz",
-            "namespace_id": 5,
-            "rule_group": "4 GPU Server GPU Number Error",
-            "no_data_state": "OK",
-            "exec_err_state": "Alerting"
-          }
-        }
-      ]
-    },
-    {
       "name": "GPU Server Nvidia-SMI Error",
       "interval": "1m",
       "rules": [
@@ -195,7 +11,7 @@
             "summary": "GPU Server Nvidia-SMI Error"
           },
           "grafana_alert": {
-            "id": 11,
+            "id": 33,
             "orgId": 1,
             "title": "GPU Server Nvidia-SMI Error",
             "condition": "B",
@@ -263,15 +79,16 @@
                 }
               }
             ],
-            "updated": "2022-01-30T07:06:18Z",
+            "updated": "2022-03-27T09:42:45Z",
             "intervalSeconds": 60,
-            "version": 4,
-            "uid": "g2mR-Yb7z",
-            "namespace_uid": "_u4exYxnz",
-            "namespace_id": 5,
+            "version": 1,
+            "uid": "ouBKGNsnz",
+            "namespace_uid": "gwBFGNynk",
+            "namespace_id": 11,
             "rule_group": "GPU Server Nvidia-SMI Error",
             "no_data_state": "OK",
-            "exec_err_state": "Alerting"
+            "exec_err_state": "Alerting",
+            "is_paused": false
           }
         }
       ]
@@ -282,12 +99,12 @@
       "rules": [
         {
           "expr": "",
-          "for": "3m",
+          "for": "30m",
           "annotations": {
             "summary": "GPU in high temprature"
           },
           "grafana_alert": {
-            "id": 12,
+            "id": 34,
             "orgId": 1,
             "title": "GPU Temperature High",
             "condition": "B",
@@ -324,7 +141,7 @@
                     {
                       "evaluator": {
                         "params": [
-                          79.5
+                          80.5
                         ],
                         "type": "gt"
                       },
@@ -355,15 +172,693 @@
                 }
               }
             ],
-            "updated": "2022-01-29T11:50:25Z",
+            "updated": "2023-08-07T07:40:40Z",
             "intervalSeconds": 60,
-            "version": 1,
-            "uid": "f12g-Yb7z",
-            "namespace_uid": "_u4exYxnz",
-            "namespace_id": 5,
+            "version": 3,
+            "uid": "hrfKGHy7k",
+            "namespace_uid": "gwBFGNynk",
+            "namespace_id": 11,
             "rule_group": "GPU Temperature High",
             "no_data_state": "NoData",
-            "exec_err_state": "Alerting"
+            "exec_err_state": "Alerting",
+            "is_paused": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "GPU Server GPU Number Error",
+      "interval": "1m",
+      "rules": [
+        {
+          "expr": "",
+          "for": "5m",
+          "annotations": {
+            "summary": "2 GPU Server GPU Number Error"
+          },
+          "grafana_alert": {
+            "id": 31,
+            "orgId": 1,
+            "title": "2 GPU Server GPU Number Error",
+            "condition": "B",
+            "data": [
+              {
+                "refId": "A",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 600,
+                  "to": 0
+                },
+                "datasourceUid": "PBFA97CFB590B2093",
+                "model": {
+                  "editorMode": "code",
+                  "exemplar": false,
+                  "expr": "count(nvidia_smi_gpu_info * on (instance) group_left(hostname) node_host_name{hostname=~\"idc56202|idc56203|idc56205|idc56206|node29\"}) by (hostname)",
+                  "hide": false,
+                  "interval": "",
+                  "intervalMs": 1000,
+                  "legendFormat": "",
+                  "maxDataPoints": 43200,
+                  "range": true,
+                  "refId": "A"
+                }
+              },
+              {
+                "refId": "B",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 0,
+                  "to": 0
+                },
+                "datasourceUid": "-100",
+                "model": {
+                  "conditions": [
+                    {
+                      "evaluator": {
+                        "params": [
+                          2
+                        ],
+                        "type": "lt"
+                      },
+                      "operator": {
+                        "type": "and"
+                      },
+                      "query": {
+                        "params": [
+                          "A"
+                        ]
+                      },
+                      "reducer": {
+                        "params": [],
+                        "type": "last"
+                      },
+                      "type": "query"
+                    }
+                  ],
+                  "datasource": {
+                    "type": "__expr__",
+                    "uid": "-100"
+                  },
+                  "hide": false,
+                  "intervalMs": 1000,
+                  "maxDataPoints": 43200,
+                  "refId": "B",
+                  "type": "classic_conditions"
+                }
+              }
+            ],
+            "updated": "2023-05-19T11:02:26Z",
+            "intervalSeconds": 60,
+            "version": 13,
+            "uid": "_wfKGHs7z",
+            "namespace_uid": "gwBFGNynk",
+            "namespace_id": 11,
+            "rule_group": "GPU Server GPU Number Error",
+            "no_data_state": "OK",
+            "exec_err_state": "Alerting",
+            "is_paused": false
+          }
+        },
+        {
+          "expr": "",
+          "for": "5m",
+          "annotations": {
+            "summary": "3 GPU Server GPU Number Error"
+          },
+          "grafana_alert": {
+            "id": 39,
+            "orgId": 1,
+            "title": "3 GPU Server GPU Number Error",
+            "condition": "B",
+            "data": [
+              {
+                "refId": "A",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 600,
+                  "to": 0
+                },
+                "datasourceUid": "PBFA97CFB590B2093",
+                "model": {
+                  "editorMode": "code",
+                  "exemplar": false,
+                  "expr": "count(nvidia_smi_gpu_info * on (instance) group_left(hostname) node_host_name{hostname=~\"\"}) by (hostname)",
+                  "hide": false,
+                  "interval": "",
+                  "intervalMs": 1000,
+                  "legendFormat": "",
+                  "maxDataPoints": 43200,
+                  "range": true,
+                  "refId": "A"
+                }
+              },
+              {
+                "refId": "B",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 0,
+                  "to": 0
+                },
+                "datasourceUid": "-100",
+                "model": {
+                  "conditions": [
+                    {
+                      "evaluator": {
+                        "params": [
+                          3
+                        ],
+                        "type": "lt"
+                      },
+                      "operator": {
+                        "type": "and"
+                      },
+                      "query": {
+                        "params": [
+                          "A"
+                        ]
+                      },
+                      "reducer": {
+                        "params": [],
+                        "type": "last"
+                      },
+                      "type": "query"
+                    }
+                  ],
+                  "datasource": {
+                    "type": "__expr__",
+                    "uid": "-100"
+                  },
+                  "hide": false,
+                  "intervalMs": 1000,
+                  "maxDataPoints": 43200,
+                  "refId": "B",
+                  "type": "classic_conditions"
+                }
+              }
+            ],
+            "updated": "2023-05-19T11:02:26Z",
+            "intervalSeconds": 60,
+            "version": 7,
+            "uid": "sUQ8dFY4k",
+            "namespace_uid": "gwBFGNynk",
+            "namespace_id": 11,
+            "rule_group": "GPU Server GPU Number Error",
+            "no_data_state": "OK",
+            "exec_err_state": "Alerting",
+            "is_paused": false
+          }
+        },
+        {
+          "expr": "",
+          "for": "5m",
+          "annotations": {
+            "summary": "4 GPU Server GPU Number Error"
+          },
+          "grafana_alert": {
+            "id": 32,
+            "orgId": 1,
+            "title": "4 GPU Server GPU Number Error",
+            "condition": "B",
+            "data": [
+              {
+                "refId": "A",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 600,
+                  "to": 0
+                },
+                "datasourceUid": "PBFA97CFB590B2093",
+                "model": {
+                  "editorMode": "code",
+                  "exemplar": false,
+                  "expr": "count(nvidia_smi_gpu_info * on (instance) group_left(hostname) node_host_name{hostname=~\"node27\"}) by (hostname)",
+                  "hide": false,
+                  "interval": "",
+                  "intervalMs": 1000,
+                  "legendFormat": "",
+                  "maxDataPoints": 43200,
+                  "range": true,
+                  "refId": "A"
+                }
+              },
+              {
+                "refId": "B",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 0,
+                  "to": 0
+                },
+                "datasourceUid": "-100",
+                "model": {
+                  "conditions": [
+                    {
+                      "evaluator": {
+                        "params": [
+                          4
+                        ],
+                        "type": "lt"
+                      },
+                      "operator": {
+                        "type": "and"
+                      },
+                      "query": {
+                        "params": [
+                          "A"
+                        ]
+                      },
+                      "reducer": {
+                        "params": [],
+                        "type": "last"
+                      },
+                      "type": "query"
+                    }
+                  ],
+                  "datasource": {
+                    "type": "__expr__",
+                    "uid": "-100"
+                  },
+                  "hide": false,
+                  "intervalMs": 1000,
+                  "maxDataPoints": 43200,
+                  "refId": "B",
+                  "type": "classic_conditions"
+                }
+              }
+            ],
+            "updated": "2023-05-19T11:02:26Z",
+            "intervalSeconds": 60,
+            "version": 6,
+            "uid": "-lfFMHy7k",
+            "namespace_uid": "gwBFGNynk",
+            "namespace_id": 11,
+            "rule_group": "GPU Server GPU Number Error",
+            "no_data_state": "OK",
+            "exec_err_state": "Alerting",
+            "is_paused": false
+          }
+        }
+      ]
+    }
+  ],
+  "MooseFS": [
+    {
+      "name": "Chunkserver Usage High",
+      "interval": "1m",
+      "rules": [
+        {
+          "expr": "",
+          "for": "5m",
+          "grafana_alert": {
+            "id": 42,
+            "orgId": 1,
+            "title": "Chunkserver Usage High",
+            "condition": "C",
+            "data": [
+              {
+                "refId": "A",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 600,
+                  "to": 0
+                },
+                "datasourceUid": "PBFA97CFB590B2093",
+                "model": {
+                  "editorMode": "code",
+                  "expr": "mfs_chunkserver_used_bytes / mfs_chunkserver_total_bytes * on(id) group_left(ip) mfs_chunkserver_info",
+                  "hide": false,
+                  "intervalMs": 1000,
+                  "legendFormat": "__auto",
+                  "maxDataPoints": 43200,
+                  "range": true,
+                  "refId": "A"
+                }
+              },
+              {
+                "refId": "B",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 600,
+                  "to": 0
+                },
+                "datasourceUid": "__expr__",
+                "model": {
+                  "conditions": [
+                    {
+                      "evaluator": {
+                        "params": [],
+                        "type": "gt"
+                      },
+                      "operator": {
+                        "type": "and"
+                      },
+                      "query": {
+                        "params": [
+                          "B"
+                        ]
+                      },
+                      "reducer": {
+                        "params": [],
+                        "type": "last"
+                      },
+                      "type": "query"
+                    }
+                  ],
+                  "datasource": {
+                    "type": "__expr__",
+                    "uid": "__expr__"
+                  },
+                  "expression": "A",
+                  "hide": false,
+                  "intervalMs": 1000,
+                  "maxDataPoints": 43200,
+                  "reducer": "last",
+                  "refId": "B",
+                  "type": "reduce"
+                }
+              },
+              {
+                "refId": "C",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 600,
+                  "to": 0
+                },
+                "datasourceUid": "__expr__",
+                "model": {
+                  "conditions": [
+                    {
+                      "evaluator": {
+                        "params": [
+                          0.8
+                        ],
+                        "type": "gt"
+                      },
+                      "operator": {
+                        "type": "and"
+                      },
+                      "query": {
+                        "params": [
+                          "C"
+                        ]
+                      },
+                      "reducer": {
+                        "params": [],
+                        "type": "last"
+                      },
+                      "type": "query"
+                    }
+                  ],
+                  "datasource": {
+                    "type": "__expr__",
+                    "uid": "__expr__"
+                  },
+                  "expression": "B",
+                  "hide": false,
+                  "intervalMs": 1000,
+                  "maxDataPoints": 43200,
+                  "refId": "C",
+                  "type": "threshold"
+                }
+              }
+            ],
+            "updated": "2023-06-14T10:48:30Z",
+            "intervalSeconds": 60,
+            "version": 1,
+            "uid": "d641102a-c922-4d12-856d-0dc654f25a77",
+            "namespace_uid": "a96c257b-4199-4f7f-abd2-9813ca450523",
+            "namespace_id": 12,
+            "rule_group": "Chunkserver Usage High",
+            "no_data_state": "NoData",
+            "exec_err_state": "Error",
+            "is_paused": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "Endangered Chunks",
+      "interval": "1m",
+      "rules": [
+        {
+          "expr": "",
+          "for": "5m",
+          "grafana_alert": {
+            "id": 43,
+            "orgId": 1,
+            "title": "Endangered Chunks",
+            "condition": "C",
+            "data": [
+              {
+                "refId": "A",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 600,
+                  "to": 0
+                },
+                "datasourceUid": "PBFA97CFB590B2093",
+                "model": {
+                  "editorMode": "code",
+                  "expr": "mfs_class_endangered_chunks + mfs_class_missing_chunks + mfs_class_undergoal_chunks",
+                  "hide": false,
+                  "intervalMs": 1000,
+                  "legendFormat": "__auto",
+                  "maxDataPoints": 43200,
+                  "range": true,
+                  "refId": "A"
+                }
+              },
+              {
+                "refId": "B",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 600,
+                  "to": 0
+                },
+                "datasourceUid": "__expr__",
+                "model": {
+                  "conditions": [
+                    {
+                      "evaluator": {
+                        "params": [],
+                        "type": "gt"
+                      },
+                      "operator": {
+                        "type": "and"
+                      },
+                      "query": {
+                        "params": [
+                          "B"
+                        ]
+                      },
+                      "reducer": {
+                        "params": [],
+                        "type": "last"
+                      },
+                      "type": "query"
+                    }
+                  ],
+                  "datasource": {
+                    "type": "__expr__",
+                    "uid": "__expr__"
+                  },
+                  "expression": "A",
+                  "hide": false,
+                  "intervalMs": 1000,
+                  "maxDataPoints": 43200,
+                  "reducer": "last",
+                  "refId": "B",
+                  "type": "reduce"
+                }
+              },
+              {
+                "refId": "C",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 600,
+                  "to": 0
+                },
+                "datasourceUid": "__expr__",
+                "model": {
+                  "conditions": [
+                    {
+                      "evaluator": {
+                        "params": [
+                          0
+                        ],
+                        "type": "gt"
+                      },
+                      "operator": {
+                        "type": "and"
+                      },
+                      "query": {
+                        "params": [
+                          "C"
+                        ]
+                      },
+                      "reducer": {
+                        "params": [],
+                        "type": "last"
+                      },
+                      "type": "query"
+                    }
+                  ],
+                  "datasource": {
+                    "type": "__expr__",
+                    "uid": "__expr__"
+                  },
+                  "expression": "B",
+                  "hide": false,
+                  "intervalMs": 1000,
+                  "maxDataPoints": 43200,
+                  "refId": "C",
+                  "type": "threshold"
+                }
+              }
+            ],
+            "updated": "2023-06-14T10:55:28Z",
+            "intervalSeconds": 60,
+            "version": 1,
+            "uid": "da655d23-4cc0-4401-bf8c-a38405218d93",
+            "namespace_uid": "a96c257b-4199-4f7f-abd2-9813ca450523",
+            "namespace_id": 12,
+            "rule_group": "Endangered Chunks",
+            "no_data_state": "NoData",
+            "exec_err_state": "Error",
+            "is_paused": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "Disk Error",
+      "interval": "1m",
+      "rules": [
+        {
+          "expr": "",
+          "for": "1m",
+          "grafana_alert": {
+            "id": 41,
+            "orgId": 1,
+            "title": "MFS Disk Error",
+            "condition": "C",
+            "data": [
+              {
+                "refId": "A",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 600,
+                  "to": 0
+                },
+                "datasourceUid": "PBFA97CFB590B2093",
+                "model": {
+                  "editorMode": "code",
+                  "expr": "changes(mfs_disk_error[1d])",
+                  "hide": false,
+                  "intervalMs": 1000,
+                  "legendFormat": "__auto",
+                  "maxDataPoints": 43200,
+                  "range": true,
+                  "refId": "A"
+                }
+              },
+              {
+                "refId": "B",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 600,
+                  "to": 0
+                },
+                "datasourceUid": "__expr__",
+                "model": {
+                  "conditions": [
+                    {
+                      "evaluator": {
+                        "params": [],
+                        "type": "gt"
+                      },
+                      "operator": {
+                        "type": "and"
+                      },
+                      "query": {
+                        "params": [
+                          "B"
+                        ]
+                      },
+                      "reducer": {
+                        "params": [],
+                        "type": "last"
+                      },
+                      "type": "query"
+                    }
+                  ],
+                  "datasource": {
+                    "type": "__expr__",
+                    "uid": "__expr__"
+                  },
+                  "expression": "A",
+                  "hide": false,
+                  "intervalMs": 1000,
+                  "maxDataPoints": 43200,
+                  "reducer": "last",
+                  "refId": "B",
+                  "type": "reduce"
+                }
+              },
+              {
+                "refId": "C",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 600,
+                  "to": 0
+                },
+                "datasourceUid": "__expr__",
+                "model": {
+                  "conditions": [
+                    {
+                      "evaluator": {
+                        "params": [
+                          0
+                        ],
+                        "type": "gt"
+                      },
+                      "operator": {
+                        "type": "and"
+                      },
+                      "query": {
+                        "params": [
+                          "C"
+                        ]
+                      },
+                      "reducer": {
+                        "params": [],
+                        "type": "last"
+                      },
+                      "type": "query"
+                    }
+                  ],
+                  "datasource": {
+                    "type": "__expr__",
+                    "uid": "__expr__"
+                  },
+                  "expression": "B",
+                  "hide": false,
+                  "intervalMs": 1000,
+                  "maxDataPoints": 43200,
+                  "refId": "C",
+                  "type": "threshold"
+                }
+              }
+            ],
+            "updated": "2023-06-14T10:47:23Z",
+            "intervalSeconds": 60,
+            "version": 1,
+            "uid": "f84bbea0-3ca3-45fa-a48e-64da69cb7c84",
+            "namespace_uid": "a96c257b-4199-4f7f-abd2-9813ca450523",
+            "namespace_id": 12,
+            "rule_group": "Disk Error",
+            "no_data_state": "NoData",
+            "exec_err_state": "Error",
+            "is_paused": false
           }
         }
       ]
@@ -457,43 +952,45 @@
             "namespace_id": 4,
             "rule_group": "Disk Write High",
             "no_data_state": "NoData",
-            "exec_err_state": "Alerting"
+            "exec_err_state": "Alerting",
+            "is_paused": false
           }
         }
       ]
     },
     {
-      "name": "Test CPU Alert",
+      "name": "Server Down",
       "interval": "1m",
       "rules": [
         {
           "expr": "",
-          "for": "30m",
+          "for": "10m",
           "annotations": {
-            "summary": "CPU usage high"
+            "description": "Server Down",
+            "summary": "Server Down"
           },
           "grafana_alert": {
-            "id": 13,
+            "id": 40,
             "orgId": 1,
-            "title": "CPU Alert",
-            "condition": "B",
+            "title": "Server Down",
+            "condition": "C",
             "data": [
               {
                 "refId": "A",
                 "queryType": "",
                 "relativeTimeRange": {
-                  "from": 600,
+                  "from": 300,
                   "to": 0
                 },
                 "datasourceUid": "PBFA97CFB590B2093",
                 "model": {
-                  "exemplar": false,
-                  "expr": "(avg(irate(node_cpu_seconds_total{mode=\"idle\"}[1m])) by (instance)) * on(instance) group_left(nodename, hostname) node_host_name",
+                  "editorMode": "code",
+                  "expr": "node_ssh_down",
                   "hide": false,
-                  "interval": "",
                   "intervalMs": 1000,
-                  "legendFormat": "",
+                  "legendFormat": "__auto",
                   "maxDataPoints": 43200,
+                  "range": true,
                   "refId": "A"
                 }
               },
@@ -501,25 +998,23 @@
                 "refId": "B",
                 "queryType": "",
                 "relativeTimeRange": {
-                  "from": 0,
+                  "from": 300,
                   "to": 0
                 },
-                "datasourceUid": "-100",
+                "datasourceUid": "__expr__",
                 "model": {
                   "conditions": [
                     {
                       "evaluator": {
-                        "params": [
-                          0.2
-                        ],
-                        "type": "lt"
+                        "params": [],
+                        "type": "gt"
                       },
                       "operator": {
                         "type": "and"
                       },
                       "query": {
                         "params": [
-                          "A"
+                          "B"
                         ]
                       },
                       "reducer": {
@@ -531,170 +1026,31 @@
                   ],
                   "datasource": {
                     "type": "__expr__",
-                    "uid": "-100"
+                    "uid": "__expr__"
                   },
+                  "expression": "A",
                   "hide": false,
                   "intervalMs": 1000,
                   "maxDataPoints": 43200,
+                  "reducer": "mean",
                   "refId": "B",
-                  "type": "classic_conditions"
-                }
-              }
-            ],
-            "updated": "2022-03-27T09:23:51Z",
-            "intervalSeconds": 60,
-            "version": 13,
-            "uid": "mBXHVsx7k",
-            "namespace_uid": "nsqMTLxnk",
-            "namespace_id": 4,
-            "rule_group": "Test CPU Alert",
-            "no_data_state": "NoData",
-            "exec_err_state": "Alerting"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Disk usage",
-      "interval": "1m",
-      "rules": [
-        {
-          "expr": "",
-          "for": "5m",
-          "annotations": {
-            "summary": "Disk is running out."
-          },
-          "grafana_alert": {
-            "id": 1,
-            "orgId": 1,
-            "title": "Disk Usage High",
-            "condition": "B",
-            "data": [
-              {
-                "refId": "A",
-                "queryType": "",
-                "relativeTimeRange": {
-                  "from": 600,
-                  "to": 0
-                },
-                "datasourceUid": "PBFA97CFB590B2093",
-                "model": {
-                  "exemplar": false,
-                  "expr": "sum(node_filesystem_avail_bytes / node_filesystem_size_bytes {job=\"node-exporter\", instance=~\".*9100\", device=~\"/dev/.*\", mountpoint!~\"/var/lib/docker/aufs|/tmp/.*\", fstype=\"ext4\"} * on(instance) group_left(nodename, hostname) node_host_name) by (hostname, mountpoint)",
-                  "hide": false,
-                  "interval": "",
-                  "intervalMs": 1000,
-                  "legendFormat": "",
-                  "maxDataPoints": 43200,
-                  "refId": "A"
+                  "type": "reduce"
                 }
               },
               {
-                "refId": "B",
+                "refId": "C",
                 "queryType": "",
                 "relativeTimeRange": {
-                  "from": 0,
+                  "from": 300,
                   "to": 0
                 },
-                "datasourceUid": "-100",
+                "datasourceUid": "__expr__",
                 "model": {
                   "conditions": [
                     {
                       "evaluator": {
                         "params": [
-                          0.1
-                        ],
-                        "type": "lt"
-                      },
-                      "operator": {
-                        "type": "and"
-                      },
-                      "query": {
-                        "params": [
-                          "A"
-                        ]
-                      },
-                      "reducer": {
-                        "params": [],
-                        "type": "last"
-                      },
-                      "type": "query"
-                    }
-                  ],
-                  "datasource": {
-                    "type": "__expr__",
-                    "uid": "-100"
-                  },
-                  "hide": false,
-                  "intervalMs": 1000,
-                  "maxDataPoints": 43200,
-                  "refId": "B",
-                  "type": "classic_conditions"
-                }
-              }
-            ],
-            "updated": "2022-01-30T08:17:09Z",
-            "intervalSeconds": 60,
-            "version": 10,
-            "uid": "abTHTLxnk",
-            "namespace_uid": "nsqMTLxnk",
-            "namespace_id": 4,
-            "rule_group": "Disk usage",
-            "no_data_state": "OK",
-            "exec_err_state": "Alerting"
-          }
-        }
-      ]
-    },
-    {
-      "name": "Memory Alert",
-      "interval": "1m",
-      "rules": [
-        {
-          "expr": "",
-          "for": "5m",
-          "annotations": {
-            "summary": "Memory usage high."
-          },
-          "grafana_alert": {
-            "id": 2,
-            "orgId": 1,
-            "title": "Memory Alert",
-            "condition": "B",
-            "data": [
-              {
-                "refId": "A",
-                "queryType": "",
-                "relativeTimeRange": {
-                  "from": 600,
-                  "to": 0
-                },
-                "datasourceUid": "PBFA97CFB590B2093",
-                "model": {
-                  "exemplar": false,
-                  "expr": "((node_memory_MemTotal_bytes) - (node_memory_MemFree_bytes +node_memory_Buffers_bytes + node_memory_Cached_bytes) ) / (node_memory_MemTotal_bytes) * 100 * on(instance) group_left(nodename, hostname) node_host_name",
-                  "hide": false,
-                  "interval": "",
-                  "intervalMs": 1000,
-                  "legendFormat": "",
-                  "maxDataPoints": 43200,
-                  "refId": "A"
-                }
-              },
-              {
-                "refId": "B",
-                "queryType": "",
-                "relativeTimeRange": {
-                  "from": 0,
-                  "to": 0
-                },
-                "datasourceUid": "-100",
-                "model": {
-                  "conditions": [
-                    {
-                      "evaluator": {
-                        "params": [
-                          85
+                          0.9
                         ],
                         "type": "gt"
                       },
@@ -703,7 +1059,7 @@
                       },
                       "query": {
                         "params": [
-                          "A"
+                          "C"
                         ]
                       },
                       "reducer": {
@@ -715,25 +1071,27 @@
                   ],
                   "datasource": {
                     "type": "__expr__",
-                    "uid": "-100"
+                    "uid": "__expr__"
                   },
+                  "expression": "B",
                   "hide": false,
                   "intervalMs": 1000,
                   "maxDataPoints": 43200,
-                  "refId": "B",
-                  "type": "classic_conditions"
+                  "refId": "C",
+                  "type": "threshold"
                 }
               }
             ],
-            "updated": "2022-01-29T11:06:34Z",
+            "updated": "2023-06-15T07:08:47Z",
             "intervalSeconds": 60,
-            "version": 3,
-            "uid": "bkGFAYx7k",
+            "version": 5,
+            "uid": "b0a428e7-78d8-4a27-bf5b-7a3f08a1225a",
             "namespace_uid": "nsqMTLxnk",
             "namespace_id": 4,
-            "rule_group": "Memory Alert",
-            "no_data_state": "NoData",
-            "exec_err_state": "Alerting"
+            "rule_group": "Server Down",
+            "no_data_state": "OK",
+            "exec_err_state": "Error",
+            "is_paused": false
           }
         }
       ]
@@ -825,7 +1183,287 @@
             "namespace_id": 4,
             "rule_group": "Disk Read High",
             "no_data_state": "NoData",
-            "exec_err_state": "Alerting"
+            "exec_err_state": "Alerting",
+            "is_paused": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "Disk usage",
+      "interval": "1m",
+      "rules": [
+        {
+          "expr": "",
+          "for": "5m",
+          "annotations": {
+            "summary": "Disk is running out."
+          },
+          "grafana_alert": {
+            "id": 1,
+            "orgId": 1,
+            "title": "Disk Usage High",
+            "condition": "B",
+            "data": [
+              {
+                "refId": "A",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 600,
+                  "to": 0
+                },
+                "datasourceUid": "PBFA97CFB590B2093",
+                "model": {
+                  "exemplar": false,
+                  "expr": "sum(node_filesystem_avail_bytes / node_filesystem_size_bytes {job=\"node-exporter\", instance=~\".*9100\", device=~\"/dev/.*\", mountpoint!~\"/var/lib/docker/aufs|/tmp/.*\", fstype=\"ext4\"} * on(instance) group_left(nodename, hostname) node_host_name) by (hostname, mountpoint)",
+                  "hide": false,
+                  "interval": "",
+                  "intervalMs": 1000,
+                  "legendFormat": "",
+                  "maxDataPoints": 43200,
+                  "refId": "A"
+                }
+              },
+              {
+                "refId": "B",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 0,
+                  "to": 0
+                },
+                "datasourceUid": "-100",
+                "model": {
+                  "conditions": [
+                    {
+                      "evaluator": {
+                        "params": [
+                          0.1
+                        ],
+                        "type": "lt"
+                      },
+                      "operator": {
+                        "type": "and"
+                      },
+                      "query": {
+                        "params": [
+                          "A"
+                        ]
+                      },
+                      "reducer": {
+                        "params": [],
+                        "type": "last"
+                      },
+                      "type": "query"
+                    }
+                  ],
+                  "datasource": {
+                    "type": "__expr__",
+                    "uid": "-100"
+                  },
+                  "hide": false,
+                  "intervalMs": 1000,
+                  "maxDataPoints": 43200,
+                  "refId": "B",
+                  "type": "classic_conditions"
+                }
+              }
+            ],
+            "updated": "2022-01-30T08:17:09Z",
+            "intervalSeconds": 60,
+            "version": 10,
+            "uid": "abTHTLxnk",
+            "namespace_uid": "nsqMTLxnk",
+            "namespace_id": 4,
+            "rule_group": "Disk usage",
+            "no_data_state": "OK",
+            "exec_err_state": "Alerting",
+            "is_paused": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "Memory Alert",
+      "interval": "1m",
+      "rules": [
+        {
+          "expr": "",
+          "for": "10m",
+          "annotations": {
+            "summary": "Memory usage high."
+          },
+          "grafana_alert": {
+            "id": 2,
+            "orgId": 1,
+            "title": "Memory Alert",
+            "condition": "B",
+            "data": [
+              {
+                "refId": "A",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 600,
+                  "to": 0
+                },
+                "datasourceUid": "PBFA97CFB590B2093",
+                "model": {
+                  "exemplar": false,
+                  "expr": "((node_memory_MemTotal_bytes) - (node_memory_MemFree_bytes +node_memory_Buffers_bytes + node_memory_Cached_bytes) ) / (node_memory_MemTotal_bytes) * 100 * on(instance) group_left(nodename, hostname) node_host_name",
+                  "hide": false,
+                  "interval": "",
+                  "intervalMs": 1000,
+                  "legendFormat": "",
+                  "maxDataPoints": 43200,
+                  "refId": "A"
+                }
+              },
+              {
+                "refId": "B",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 0,
+                  "to": 0
+                },
+                "datasourceUid": "-100",
+                "model": {
+                  "conditions": [
+                    {
+                      "evaluator": {
+                        "params": [
+                          90
+                        ],
+                        "type": "gt"
+                      },
+                      "operator": {
+                        "type": "and"
+                      },
+                      "query": {
+                        "params": [
+                          "A"
+                        ]
+                      },
+                      "reducer": {
+                        "params": [],
+                        "type": "last"
+                      },
+                      "type": "query"
+                    }
+                  ],
+                  "datasource": {
+                    "type": "__expr__",
+                    "uid": "-100"
+                  },
+                  "hide": false,
+                  "intervalMs": 1000,
+                  "maxDataPoints": 43200,
+                  "refId": "B",
+                  "type": "classic_conditions"
+                }
+              }
+            ],
+            "updated": "2023-06-14T05:51:08Z",
+            "intervalSeconds": 60,
+            "version": 7,
+            "uid": "bkGFAYx7k",
+            "namespace_uid": "nsqMTLxnk",
+            "namespace_id": 4,
+            "rule_group": "Memory Alert",
+            "no_data_state": "NoData",
+            "exec_err_state": "Alerting",
+            "is_paused": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "Test CPU Alert",
+      "interval": "1m",
+      "rules": [
+        {
+          "expr": "",
+          "for": "30m",
+          "annotations": {
+            "summary": "CPU usage high"
+          },
+          "grafana_alert": {
+            "id": 36,
+            "orgId": 1,
+            "title": "CPU Alert",
+            "condition": "B",
+            "data": [
+              {
+                "refId": "A",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 600,
+                  "to": 0
+                },
+                "datasourceUid": "PBFA97CFB590B2093",
+                "model": {
+                  "exemplar": false,
+                  "expr": "(avg(irate(node_cpu_seconds_total{mode=\"idle\"}[1m])) by (instance)) * on(instance) group_left(nodename, hostname) node_host_name",
+                  "hide": false,
+                  "interval": "",
+                  "intervalMs": 1000,
+                  "legendFormat": "",
+                  "maxDataPoints": 43200,
+                  "refId": "A"
+                }
+              },
+              {
+                "refId": "B",
+                "queryType": "",
+                "relativeTimeRange": {
+                  "from": 0,
+                  "to": 0
+                },
+                "datasourceUid": "-100",
+                "model": {
+                  "conditions": [
+                    {
+                      "evaluator": {
+                        "params": [
+                          0.1
+                        ],
+                        "type": "lt"
+                      },
+                      "operator": {
+                        "type": "and"
+                      },
+                      "query": {
+                        "params": [
+                          "A"
+                        ]
+                      },
+                      "reducer": {
+                        "params": [],
+                        "type": "last"
+                      },
+                      "type": "query"
+                    }
+                  ],
+                  "datasource": {
+                    "type": "__expr__",
+                    "uid": "-100"
+                  },
+                  "hide": false,
+                  "intervalMs": 1000,
+                  "maxDataPoints": 43200,
+                  "refId": "B",
+                  "type": "classic_conditions"
+                }
+              }
+            ],
+            "updated": "2022-04-12T15:15:41Z",
+            "intervalSeconds": 60,
+            "version": 3,
+            "uid": "L8F27Ns7k",
+            "namespace_uid": "nsqMTLxnk",
+            "namespace_id": 4,
+            "rule_group": "Test CPU Alert",
+            "no_data_state": "NoData",
+            "exec_err_state": "Alerting",
+            "is_paused": false
           }
         }
       ]
